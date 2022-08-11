@@ -3,7 +3,7 @@
 <ul>
   <li>
     <strong>Pago:</strong>
-    <%= fine_paid(@fine.paid) %>
+    <%= format_fine_paid(@fine.paid) %>
   </li>
 
   <li>
@@ -13,7 +13,7 @@
 
   <li>
     <strong>Valor:</strong>
-    <%= print_currency(@fine.value) %>
+    <%= format_currency(@fine.value) %>
   </li>
 </ul>
 

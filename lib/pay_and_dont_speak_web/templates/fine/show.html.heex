@@ -9,7 +9,7 @@
 
   <li>
     <strong>Valor Base:</strong>
-    <%= print_currency(@fine.base_value) %>
+    <%= format_currency(@fine.base_value) %>
   </li>
 
   <li>
@@ -36,9 +36,9 @@
     <tr>
       <td><%= player_fine.player.name %></td>
       <td><%= format_paid_at(player_fine.inserted_at) %></td>
-      <td><%= fine_paid(player_fine.paid) %></td>
+      <td><%= format_fine_paid(player_fine.paid) %></td>
       <td><%= format_paid_at(player_fine.paid_at)  %></td>
-      <td><%= print_currency(player_fine.value) %></td>
+      <td><%= format_currency(player_fine.value) %></td>
 
       <td>
         <span><%= link "Ver", to: Routes.player_fine_path(@conn, :show, player_fine) %></span>

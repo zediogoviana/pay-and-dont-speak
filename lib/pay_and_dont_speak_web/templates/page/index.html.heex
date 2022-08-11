@@ -22,7 +22,7 @@
           <%= for player_fine <- debtor.player_fines do %>
             <div style="display: flex; justify-content: space-between;">
               <span style="padding-right: 5px; width: 70%;"> - <%= player_fine.fine.description %></span>
-              <span style="padding-right: 5px;"><%= print_currency(player_fine.value) %></span>
+              <span style="padding-right: 5px;"><%= format_currency(player_fine.value) %></span>
               <span style="padding-right: 5px;"><%= format_paid_at(player_fine.inserted_at) %></span>
               <span><%= link "Ver", to: Routes.player_fine_path(@conn, :show, player_fine) %></span>
             </div>
@@ -32,7 +32,7 @@
       <td style="vertical-align: baseline; text-align: center;">
         <div>
           <b>
-            <%= print_currency(debtor.player_fines |> Enum.map(& &1.value) |> Enum.sum())  %>
+            <%= format_currency(debtor.player_fines |> Enum.map(& &1.value) |> Enum.sum())  %>
           </b>
         </div>
       </td>

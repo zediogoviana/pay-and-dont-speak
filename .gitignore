@@ -32,3 +32,8 @@ pay_and_dont_speak-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Files created by flyctl
+rel/
+Dockerfile
+.dockerignore
+

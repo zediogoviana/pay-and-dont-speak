@@ -14,7 +14,7 @@
 <%= for fine <- @fines do %>
     <tr>
       <td><%= fine.description %></td>
-      <td><%= print_currency(fine.base_value) %></td>
+      <td><%= format_currency(fine.base_value) %></td>
       <td><%= fine.multiplier %></td>
 
       <td>

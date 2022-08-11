@@ -1,5 +1,7 @@
 # PayAndDontSpeak
 
+https://pay-and-dont-speak.fly.dev
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

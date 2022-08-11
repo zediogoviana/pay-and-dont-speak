@@ -1,5 +1,5 @@
 defmodule PayAndDontSpeakWeb.Helpers do
-  def print_currency(integer_value) do
+  def format_currency(integer_value) do
     "#{integer_value / 100}€"
   end
 
@@ -7,7 +7,7 @@ defmodule PayAndDontSpeakWeb.Helpers do
     if date, do: Date.to_string(date), else: "-"
   end
 
-  def fine_paid(paid) do
+  def format_fine_paid(paid) do
     if paid, do: "✅", else: "❌"
   end
 end

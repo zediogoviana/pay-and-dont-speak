@@ -69,7 +69,7 @@ defmodule PayAndDontSpeak.Team do
     new_attrs =
       Map.merge(
         attrs,
-        %{"base_value" => parse_value(attrs["base_value"])}
+        %{"base_value" => parse_currency_value(attrs["base_value"])}
       )
 
     %Fine{}
@@ -81,7 +81,7 @@ defmodule PayAndDontSpeak.Team do
     new_attrs =
       Map.merge(
         attrs,
-        %{"base_value" => parse_value(attrs["base_value"])}
+        %{"base_value" => parse_currency_value(attrs["base_value"])}
       )
 
     fine
@@ -123,7 +123,7 @@ defmodule PayAndDontSpeak.Team do
     new_attrs =
       Map.merge(
         attrs,
-        %{"value" => parse_value(attrs["value"])}
+        %{"value" => parse_currency_value(attrs["value"])}
       )
 
     player_fine
@@ -139,7 +139,7 @@ defmodule PayAndDontSpeak.Team do
     PlayerFine.changeset(player_fine, attrs)
   end
 
-  defp parse_value(value) when is_binary(value) do
+  defp parse_currency_value(value) when is_binary(value) do
     value
     |> Float.parse()
     |> elem(0)
@@ -147,5 +147,5 @@ defmodule PayAndDontSpeak.Team do
     |> trunc()
   end
 
-  defp parse_value(value), do: value
+  defp parse_currency_value(value), do: value
 end
