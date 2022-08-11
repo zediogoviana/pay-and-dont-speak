@@ -1,0 +1,5 @@
+<h1>Editar Jogador</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.player_path(@conn, :update, @player)) %>
+
+<span><%= link "Cancelar", to: Routes.player_path(@conn, :index) %></span>

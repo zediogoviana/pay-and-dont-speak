@@ -1,0 +1,28 @@
+<h1>Multas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Agravamento</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for fine <- @fines do %>
+    <tr>
+      <td><%= fine.description %></td>
+      <td><%= print_currency(fine.base_value) %></td>
+      <td><%= fine.multiplier %></td>
+
+      <td>
+        <span><%= link "Ver", to: Routes.fine_path(@conn, :show, fine) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Adicionar Multa", to: Routes.fine_path(@conn, :new) %></span>

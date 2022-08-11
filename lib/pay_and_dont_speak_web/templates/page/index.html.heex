@@ -1,0 +1,42 @@
+<h1>Multar Jogador</h1>
+
+<%= render PayAndDontSpeakWeb.PlayerFineView, "form_for_player.html", Map.put(assigns, :action, Routes.player_fine_path(@conn, :create)) %>
+
+<h1>Em Falta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for debtor <- @debtors do %>
+    <tr>
+      <td>
+        <div>
+          <p><b><%= debtor.name %></b></p>
+
+          <%= for player_fine <- debtor.player_fines do %>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="padding-right: 5px; width: 70%;"> - <%= player_fine.fine.description %></span>
+              <span style="padding-right: 5px;"><%= print_currency(player_fine.value) %></span>
+              <span style="padding-right: 5px;"><%= format_paid_at(player_fine.inserted_at) %></span>
+              <span><%= link "Ver", to: Routes.player_fine_path(@conn, :show, player_fine) %></span>
+            </div>
+          <% end %>
+        </div>
+      </td>
+      <td style="vertical-align: baseline; text-align: center;">
+        <div>
+          <b>
+            <%= print_currency(debtor.player_fines |> Enum.map(& &1.value) |> Enum.sum())  %>
+          </b>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

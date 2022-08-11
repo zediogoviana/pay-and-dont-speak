@@ -1,0 +1,5 @@
+<h1>Editar Multa de Jogador</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.player_fine_path(@conn, :update, @fine)) %>
+
+<span><%= link "Cancelar", to: Routes.player_fine_path(@conn, :index) %></span>

@@ -1,0 +1,31 @@
+<h1><%= @player.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Multa</th>
+      <th>Pago</th>
+      <th>Data</th>
+      <th>Valor</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for player_fine <- @player.player_fines do %>
+    <tr>
+      <td><%= player_fine.fine.description %></td>
+      <td><%= fine_paid(player_fine.paid) %></td>
+      <td><%= format_paid_at(player_fine.paid_at) %></td>
+      <td><%= print_currency(player_fine.value) %></td>
+
+      <td>
+        <span><%= link "Ver", to: Routes.player_fine_path(@conn, :show, player_fine) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Editar", to: Routes.player_path(@conn, :edit, @player) %></span> |
+ <span><%= link "Eliminar", to: Routes.player_path(@conn, :delete, @player), method: :delete, data: [confirm: "Tens a certeza?"], class: "alert-delete" %></span>

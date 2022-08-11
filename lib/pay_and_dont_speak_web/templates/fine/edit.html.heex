@@ -1,0 +1,5 @@
+<h1>Editar Multa</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.fine_path(@conn, :update, @fine)) %>
+
+<span><%= link "Cancelar", to: Routes.fine_path(@conn, :index) %></span>

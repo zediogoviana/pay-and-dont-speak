@@ -1,0 +1,19 @@
+<.form let={f} for={@player_fine_changeset} action={@action}>
+  <%= if @player_fine_changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :player_id, "Jogador" %>
+  <%= select f, :player_id, Enum.map(@players, &{&1.name, &1.id}), prompt: [key: "Jogador", disabled: true], style: "width: 400px; max-width: 100%" %>
+  <%= error_tag f, :player_id %>
+
+  <%= label f, :fine, "Multa" %>
+  <%= select f, :fine_id, Enum.map(@fines, &{&1.description, &1.id}), prompt: [key: "Multa", disabled: true], style: "width: 400px; max-width: 100%" %>
+  <%= error_tag f, :fine_id %>
+
+  <div>
+    <%= submit "Multar" %>
+  </div>
+</.form>

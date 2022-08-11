@@ -1,0 +1,24 @@
+<h1>Jogadores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for player <- @players do %>
+    <tr>
+      <td><%= player.name %></td>
+
+      <td>
+        <span><%= link "Ver", to: Routes.player_path(@conn, :show, player.id) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Adicionar Jogador", to: Routes.player_path(@conn, :new) %></span>
