@@ -21,4 +21,6 @@
   </tbody>
 </table>
 
-<span><%= link "Adicionar Jogador", to: Routes.player_path(@conn, :new) %></span>
+<%= if @current_user do %>
+  <span><%= link "Adicionar Jogador", to: Routes.player_path(@conn, :new) %></span>
+<% end %>

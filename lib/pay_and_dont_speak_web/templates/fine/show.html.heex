@@ -48,5 +48,7 @@
   </tbody>
 </table>
 
-<span><%= link "Editar", to: Routes.fine_path(@conn, :edit, @fine) %></span> |
-<span><%= link "Eliminar", to: Routes.fine_path(@conn, :delete, @fine), method: :delete, data: [confirm: "Tens a certeza?"], class: "alert-delete" %></span>
+<%= if @current_user do %>
+  <span><%= link "Editar", to: Routes.fine_path(@conn, :edit, @fine) %></span> |
+  <span><%= link "Eliminar", to: Routes.fine_path(@conn, :delete, @fine), method: :delete, data: [confirm: "Tens a certeza?"], class: "alert-delete" %></span>
+<% end %>

@@ -27,5 +27,7 @@
   </tbody>
 </table>
 
-<span><%= link "Editar", to: Routes.player_path(@conn, :edit, @player) %></span> |
- <span><%= link "Eliminar", to: Routes.player_path(@conn, :delete, @player), method: :delete, data: [confirm: "Tens a certeza?"], class: "alert-delete" %></span>
+<%= if @current_user do %>
+  <span><%= link "Editar", to: Routes.player_path(@conn, :edit, @player) %></span> |
+  <span><%= link "Eliminar", to: Routes.player_path(@conn, :delete, @player), method: :delete, data: [confirm: "Tens a certeza?"], class: "alert-delete" %></span>
+<% end %>

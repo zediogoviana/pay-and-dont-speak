@@ -25,4 +25,6 @@
   </tbody>
 </table>
 
-<span><%= link "Adicionar Multa", to: Routes.fine_path(@conn, :new) %></span>
+<%= if @current_user do %>
+  <span><%= link "Adicionar Multa", to: Routes.fine_path(@conn, :new) %></span>
+<% end %>
