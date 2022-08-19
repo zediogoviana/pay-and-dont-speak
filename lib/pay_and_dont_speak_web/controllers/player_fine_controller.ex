@@ -30,7 +30,7 @@ defmodule PayAndDontSpeakWeb.PlayerFineController do
   end
 
   def show(conn, %{"id" => id}) do
-    fine = Team.get_player_fine!(id)
+    fine = Team.get_player_fine!(id, [:fine, :player])
     render(conn, "show.html", fine: fine)
   end
 

@@ -1,6 +1,10 @@
-<h1>Multa a Jogador</h1>
+<h1>Multa a <%= @fine.player.name %></h1>
 
 <ul>
+  <li>
+    <strong>Multa:</strong>
+    <%= @fine.fine.description %>
+  </li>
   <li>
     <strong>Pago:</strong>
     <%= format_fine_paid(@fine.paid) %>

@@ -17,7 +17,7 @@
     <tr>
       <td>
         <div>
-          <p><b><%= debtor.name %></b></p>
+          <p><b><%= link debtor.name, to: Routes.player_path(@conn, :show, debtor) %></b></p>
 
           <%= for player_fine <- debtor.player_fines do %>
             <div style="display: flex; justify-content: space-between;">

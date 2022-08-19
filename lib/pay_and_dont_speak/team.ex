@@ -102,10 +102,30 @@ defmodule PayAndDontSpeak.Team do
     |> Repo.preload([:fine, :player])
   end
 
-  def get_player_fine!(id), do: Repo.get!(PlayerFine, id)
+  def get_player_fine!(id, preloads \\ []) do
+    Repo.get!(PlayerFine, id)
+    |> Repo.preload(preloads)
+  end
 
-  def add_fine_to_player(attrs \\ %{}) do
-    value = 123
+  def get_last_recurring_player_fine(player_id, fine_id) do
+    PlayerFine
+    |> where(player_id: ^player_id, fine_id: ^fine_id)
+    |> last(:inserted_at)
+    |> Repo.one()
+  end
+
+  def add_fine_to_player(%{"fine_id" => fine_id, "player_id" => player_id} = attrs) do
+    fine = get_fine!(fine_id)
+
+    value =
+      case get_last_recurring_player_fine(player_id, fine_id) do
+        nil ->
+          fine.base_value
+
+        recurring_fine ->
+          trunc(recurring_fine.value * fine.multiplier)
+      end
+
     attrs_with_value = Map.merge(attrs, %{"value" => value})
 
     %PlayerFine{}
