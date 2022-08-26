@@ -140,10 +140,16 @@ defmodule PayAndDontSpeak.Team do
   end
 
   def update_player_fine(%PlayerFine{} = player_fine, attrs) do
+    paid_at =
+      case attrs["paid"] do
+        "true" -> DateTime.utc_now()
+        _ -> nil
+      end
+
     new_attrs =
       Map.merge(
         attrs,
-        %{"value" => parse_currency_value(attrs["value"])}
+        %{"value" => parse_currency_value(attrs["value"]), "paid_at" => paid_at}
       )
 
     player_fine

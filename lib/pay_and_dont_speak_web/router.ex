@@ -57,11 +57,6 @@ defmodule PayAndDontSpeakWeb.Router do
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PayAndDontSpeakWeb do
-  #   pipe_through :api
-  # end
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

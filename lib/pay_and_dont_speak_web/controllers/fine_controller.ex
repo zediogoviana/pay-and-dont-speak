@@ -18,7 +18,7 @@ defmodule PayAndDontSpeakWeb.FineController do
     case Team.create_fine(fine_params) do
       {:ok, fine} ->
         conn
-        |> put_flash(:info, "Fine created successfully.")
+        |> put_flash(:info, "Multa criada com sucesso.")
         |> redirect(to: Routes.fine_path(conn, :show, fine))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -43,7 +43,7 @@ defmodule PayAndDontSpeakWeb.FineController do
     case Team.update_fine(fine, fine_params) do
       {:ok, fine} ->
         conn
-        |> put_flash(:info, "Fine updated successfully.")
+        |> put_flash(:info, "Multa atualizada com sucesso.")
         |> redirect(to: Routes.fine_path(conn, :show, fine))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -56,7 +56,7 @@ defmodule PayAndDontSpeakWeb.FineController do
     {:ok, _fine} = Team.delete_fine(fine)
 
     conn
-    |> put_flash(:info, "Fine deleted successfully.")
+    |> put_flash(:info, "Multa eliminada com sucesso.")
     |> redirect(to: Routes.fine_path(conn, :index))
   end
 end

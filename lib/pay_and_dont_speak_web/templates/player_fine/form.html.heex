@@ -10,7 +10,7 @@
   <%= error_tag f, :paid %>
 
   <%= label f, :value %>
-  <%= number_input f, :value, step: "any", value: if input_value(f, :base_value) && !@changeset.action, do: input_value(f, :base_value) / 100, else: 0 %>
+  <%= number_input f, :value, step: "any", value: if input_value(f, :value) && !@changeset.action, do: input_value(f, :value) / 100, else: 0 %>
   <%= error_tag f, :value %>
 
   <div>
