@@ -4,6 +4,8 @@
   <%= render PayAndDontSpeakWeb.PlayerFineView, "form_for_player.html", Map.put(assigns, :action, Routes.player_fine_path(@conn, :create)) %>
 <% end %>
 
+<h1>Recebido: <%= format_currency(@total_collected) %></h1>
+
 <h1>Em Falta</h1>
 
 <table>

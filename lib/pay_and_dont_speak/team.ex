@@ -97,6 +97,13 @@ defmodule PayAndDontSpeak.Team do
     Fine.changeset(fine, attrs)
   end
 
+  def total_value_collected_in_fines() do
+    query = from p in PlayerFine, where: p.paid == true, select: sum(p.value)
+
+    Repo.all(query)
+    |> hd()
+  end
+
   def list_player_fines do
     Repo.all(PlayerFine)
     |> Repo.preload([:fine, :player])
