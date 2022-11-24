@@ -31,9 +31,3 @@ pay_and_dont_speak-*.tar
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
 /assets/node_modules/
-
-# Files created by flyctl
-rel/
-Dockerfile
-.dockerignore
-
