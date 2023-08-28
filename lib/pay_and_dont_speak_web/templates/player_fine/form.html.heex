@@ -1,15 +1,15 @@
 <.form let={f} for={@changeset} action={@action}>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p>Oops, algo correu mal! Por favor verifique os erros abaixo.</p>
     </div>
   <% end %>
 
-  <%= label f, :paid %>
+  <%= label f, :paid, "Pago" %>
   <%= checkbox f, :paid %>
   <%= error_tag f, :paid %>
 
-  <%= label f, :value %>
+  <%= label f, :value, "Valor" %>
   <%= number_input f, :value, step: "any", value: if input_value(f, :value) && !@changeset.action, do: input_value(f, :value) / 100, else: 0 %>
   <%= error_tag f, :value %>
 

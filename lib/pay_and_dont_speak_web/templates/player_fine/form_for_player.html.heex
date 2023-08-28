@@ -5,8 +5,8 @@
     </div>
   <% end %>
 
-  <%= label f, :player_id, "Jogador" %>
-  <%= select f, :player_id, Enum.map(@players, &{&1.name, &1.id}), prompt: [key: "Jogador", disabled: true], style: "width: 400px; max-width: 100%" %>
+  <%= label f, :player_id, "Membro da Equipa" %>
+  <%= select f, :player_id, Enum.map(@players, &{&1.name, &1.id}), prompt: [key: "Membro da Equipa", disabled: true], style: "width: 400px; max-width: 100%" %>
   <%= error_tag f, :player_id %>
 
   <%= label f, :fine, "Multa" %>

@@ -1,5 +1,5 @@
 <%= if @current_user do %>
-  <h1>Multar Jogador</h1>
+  <h1>Multar Membro da Equipa</h1>
 
   <%= render PayAndDontSpeakWeb.PlayerFineView, "form_for_player.html", Map.put(assigns, :action, Routes.player_fine_path(@conn, :create)) %>
 <% end %>

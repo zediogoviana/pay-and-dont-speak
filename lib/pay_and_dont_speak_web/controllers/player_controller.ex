@@ -18,7 +18,7 @@ defmodule PayAndDontSpeakWeb.PlayerController do
     case Team.create_player(player_params) do
       {:ok, player} ->
         conn
-        |> put_flash(:info, "Jogador criado com sucesso.")
+        |> put_flash(:info, "Membro da Equipa criado com sucesso.")
         |> redirect(to: Routes.player_path(conn, :show, player))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -43,7 +43,7 @@ defmodule PayAndDontSpeakWeb.PlayerController do
     case Team.update_player(player, player_params) do
       {:ok, player} ->
         conn
-        |> put_flash(:info, "Jogado atualizado com sucesso.")
+        |> put_flash(:info, "Membro da Equipa atualizado com sucesso.")
         |> redirect(to: Routes.player_path(conn, :show, player))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -56,7 +56,7 @@ defmodule PayAndDontSpeakWeb.PlayerController do
     {:ok, _player} = Team.delete_player(player)
 
     conn
-    |> put_flash(:info, "Jogado eliminado com sucesso.")
+    |> put_flash(:info, "Membro da Equipa eliminado com sucesso.")
     |> redirect(to: Routes.player_path(conn, :index))
   end
 end
