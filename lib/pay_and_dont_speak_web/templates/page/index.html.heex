@@ -6,7 +6,9 @@
 
 <h1>Recebido: <%= format_currency(@total_collected) %></h1>
 
-<h1>Em Falta</h1>
+
+<%= if @debtors != [] do %>
+<h2>Em Falta</h2>
 
 <table>
   <thead>
@@ -44,3 +46,6 @@
 <% end %>
   </tbody>
 </table>
+<% else %>
+  <h2>Nenhuma multa por pagar 💰</h2>
+<% end %>

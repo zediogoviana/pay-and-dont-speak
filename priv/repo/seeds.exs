@@ -14,28 +14,26 @@ alias PayAndDontSpeak.Team
 
 players =
   for _player <- 1..20 do
-    Team.create_player(%{name: Faker.Person.name()})
+    Team.create_player(%{"name" => Faker.Person.name()})
     |> elem(1)
   end
 
 fines =
   for _fine <- 1..20 do
     Team.create_fine(%{
-      description: Faker.Lorem.sentence(),
-      base_value: Faker.Random.Elixir.random_between(10, 1000),
-      multiplier:
-        Faker.Random.Elixir.random_uniform()
-        |> Float.floor(2)
+      "description" => Faker.Lorem.sentence(),
+      "base_value" => Faker.Random.Elixir.random_between(10, 1000),
+      "multiplier" => Float.floor(Faker.Random.Elixir.random_uniform(), 2)
     })
     |> elem(1)
   end
 
 for player_fine <- 1..20 do
   Team.create_player_fine(%{
-    paid: Enum.random([true, false]),
-    paid_at: Faker.DateTime.backward(1),
-    value: Faker.Random.Elixir.random_between(10, 1000),
-    player_id: Enum.random(players).id,
-    fine_id: Enum.random(fines).id
+    "paid" => Enum.random([true, false]),
+    "paid_at" => Faker.DateTime.backward(1),
+    "value" => Faker.Random.Elixir.random_between(10, 1000),
+    "player_id" => Enum.random(players).id,
+    "fine_id" => Enum.random(fines).id
   })
 end

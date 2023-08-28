@@ -1,4 +1,6 @@
 defmodule PayAndDontSpeakWeb.Helpers do
+  def format_currency(nil), do: "0€"
+
   def format_currency(integer_value) do
     "#{integer_value / 100}€"
   end
