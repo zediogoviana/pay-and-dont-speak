@@ -109,7 +109,9 @@ defmodule PayAndDontSpeak.Team do
   end
 
   def list_player_fines do
-    Repo.all(PlayerFine)
+    PlayerFine
+    |> order_by([player_fine], desc: player_fine.inserted_at)
+    |> Repo.all()
     |> Repo.preload([:fine, :player])
   end
 

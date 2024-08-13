@@ -16,7 +16,7 @@
           <ul>
             <li><%= link "Equipa", to: Routes.player_path(@conn, :index) %></li>
             <li><%= link "Multas", to: Routes.fine_path(@conn, :index) %></li>
-            <li><%= link "Multas Aplicadas", to: Routes.player_fine_path(@conn, :index) %></li>
+            <li><%= link "Histórico", to: Routes.player_fine_path(@conn, :index) %></li>
           </ul>
           <%= render "_user_menu.html", assigns %>
         </nav>
@@ -26,5 +26,11 @@
       </section>
     </header>
     <%= @inner_content %>
+
+    <div class="footer">
+      <section class="container">
+        <span>🏗️ Built by <a href="https://zediogoviana.github.io" target="_blank">zediogoviana</a></span>
+      </section>
+    </div>
   </body>
 </html>
