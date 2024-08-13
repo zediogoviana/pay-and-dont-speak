@@ -5,10 +5,8 @@ defmodule PayAndDontSpeakWeb.UserRegistrationController do
   alias PayAndDontSpeak.Accounts.User
   alias PayAndDontSpeakWeb.UserAuth
 
-  @register_active Application.compile_env!(:pay_and_dont_speak, :register_active)
-
   def new(conn, _params) do
-    if @register_active === "true" do
+    if resgister_active?() do
       changeset = Accounts.change_user_registration(%User{})
       render(conn, "new.html", changeset: changeset)
     else
@@ -17,7 +15,7 @@ defmodule PayAndDontSpeakWeb.UserRegistrationController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    if @register_active === "true" do
+    if resgister_active?() do
       case Accounts.register_user(user_params) do
         {:ok, user} ->
           {:ok, _} =
@@ -44,5 +42,9 @@ defmodule PayAndDontSpeakWeb.UserRegistrationController do
     |> put_root_layout(false)
     |> put_view(PayAndDontSpeakWeb.ErrorView)
     |> render(:"404")
+  end
+
+  defp resgister_active? do
+    Application.get_env(:pay_and_dont_speak, :register_active) == "true"
   end
 end

@@ -20,6 +20,9 @@ if System.get_env("PHX_SERVER") do
   config :pay_and_dont_speak, PayAndDontSpeakWeb.Endpoint, server: true
 end
 
+config :pay_and_dont_speak,
+  register_active: System.get_env("REGISTER_ACTIVE")
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||

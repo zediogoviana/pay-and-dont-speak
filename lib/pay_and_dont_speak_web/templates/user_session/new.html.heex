@@ -13,8 +13,7 @@
   <%= label f, :password %>
   <%= password_input f, :password, required: true %>
 
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
-  <%= checkbox f, :remember_me %>
+  <%= hidden_input f, :remember_me, value: true %>
 
   <div>
     <%= submit "Log in" %>
@@ -22,6 +21,5 @@
 </.form>
 
 <p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link "Registar", to: Routes.user_registration_path(@conn, :new) %>
 </p>
