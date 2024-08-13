@@ -22,13 +22,17 @@ defmodule PayAndDontSpeak.Team do
     |> Repo.all()
   end
 
-  def list_players_with_fines do
-    Repo.all(Player)
-    |> Repo.preload(player_fines: :fine)
-  end
-
   def list_players do
-    Repo.all(Player)
+    Player
+    |> join(:left, [player], player_fine in PlayerFine, on: player.id == player_fine.player_id)
+    |> select([player, player_fine], %{
+      id: player.id,
+      name: player.name,
+      total_amount: sum(player_fine.value)
+    })
+    |> group_by([player, player_fine], player.id)
+    |> order_by([player, player_fine], desc: coalesce(sum(player_fine.value), 0))
+    |> Repo.all()
   end
 
   def get_player!(id) do

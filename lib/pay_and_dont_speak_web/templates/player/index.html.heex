@@ -5,14 +5,24 @@
     <tr>
       <th>Nome</th>
 
+      <th>Multas</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for player <- @players do %>
+<%= for {player, medal} <- Enum.take(@players, 3) |> Enum.zip(["🥇", "🥈", "🥉"]) do %>
+    <tr>
+      <td><%= medal %> <%= player.name %></td>
+      <td><%= format_currency(player.total_amount) %></td>
+      <td>
+        <span><%= link "Ver", to: Routes.player_path(@conn, :show, player.id) %></span>
+      </td>
+    </tr>
+<% end %>
+<%= for player <- Enum.drop(@players, 3) do %>
     <tr>
       <td><%= player.name %></td>
-
+      <td><%= format_currency(player.total_amount) %></td>
       <td>
         <span><%= link "Ver", to: Routes.player_path(@conn, :show, player.id) %></span>
       </td>
